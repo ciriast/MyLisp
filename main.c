@@ -35,7 +35,7 @@ int main(int argc, char** argv) {
     
     while(1) {
 
-        char* userInput = readline("lispy> ");
+        char* userInput = readline("lispyc> ");
         
         add_history(userInput);
 
