@@ -39,7 +39,7 @@ int main(int argc, char** argv) {
         
         add_history(userInput);
 
-        printf("No you are a %s\n", userInput);
+        printf("Your prompt: %s\n", userInput);
 
         free(userInput);
     }
