@@ -31,7 +31,10 @@ void add_history(char* unused) {}
 #endif
 
 void intHandler(int a) {
-    puts("Have a nice day!");
+    if (a == SIGINT)
+        printf("Have a nice day! \n");
+
+    exit(0);
  }
 
 int main(int argc, char** argv) {
