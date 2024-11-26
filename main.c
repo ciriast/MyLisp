@@ -30,7 +30,7 @@ void add_history(char* unused) {}
 #endif
 
 int main(int argc, char** argv) {
-    puts("Lisp version 0.1");
+    puts("Lisp version 0.1-this is just me chilling");
     puts("Press Ctrl+c to Exit");
     
     while(1) {
