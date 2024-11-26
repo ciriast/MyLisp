@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <signal.h>
 
 /* If we are compiling on windows compile these functions */
 #ifdef _WIN32 
@@ -29,10 +30,16 @@ void add_history(char* unused) {}
 #include <editline/history.h>
 #endif
 
+void intHandler(int a) {
+    puts("Have a nice day!");
+ }
+
 int main(int argc, char** argv) {
     puts("Lisp version 0.1-this is just me chilling");
     puts("Press Ctrl+c to Exit");
     
+    signal(SIGINT, intHandler);
+
     while(1) {
 
         char* userInput = readline("lispyc> ");
@@ -43,6 +50,7 @@ int main(int argc, char** argv) {
 
         free(userInput);
     }
+    
     // I learned that the EXIT_SUCCESS statement is declared in stdlib
     return EXIT_SUCCESS;
 }
