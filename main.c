@@ -30,11 +30,14 @@ void add_history(char* unused) {}
 #include <editline/history.h>
 #endif
 
-void intHandler(int a) {
-    if (a == SIGINT)
-        printf("Have a nice day! \n");
+volatile sig_atomic_t keepRunning = 1;
 
-    exit(0);
+void intHandler(int a) {
+    if (a == SIGINT) {
+        printf("Have a nice day! \n");
+        keepRunning = 0;
+    }
+
  }
 
 int main(int argc, char** argv) {
@@ -43,7 +46,7 @@ int main(int argc, char** argv) {
     
     signal(SIGINT, intHandler);
 
-    while(1) {
+    while(keepRunning) {
 
         char* userInput = readline("lispyc> ");
         
